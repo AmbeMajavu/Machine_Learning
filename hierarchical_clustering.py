@@ -1,20 +1,24 @@
+ #!/usr/bin/env python3
 import matplotlib.pyplot as plt
 from scipy.cluster.hierarchy import dendrogram, linkage
+if name == '__main__':
+    # Create the dataset
+    x = [2, 15, 18, 56, 10, 82, 12, 9]
+    y = [100, 78, 3, 1, 16, 25, 24, 29, 21, 21]
 
-# Create the dataset
-x = [2, 15, 18, 56, 10, 82, 12, 9]
-y = [100, 78, 3, 1, 16, 25, 24, 29, 21, 21]
+    data = list(zip(x, y))
 
-data = list(zip(x, y))
+    # Perform hierarchical clustering
+    linkage_data = linkage(data, method='ward', metric='euclidean')
 
-# Perform hierarchical clustering
-linkage_data = linkage(data, method='ward', metric='euclidean')
+    # Create the dendrogram
+    dendrogram(linkage_data)
 
-# Create the dendrogram
-dendrogram(linkage_data)
+    # Display the dendrogram
+    plt.title('Hierarchical Clustering Dendrogram')
+    plt.xlabel('Sample index')
+    plt.ylabel('Distance')
+    plt.show()
 
-# Display the dendrogram
-plt.title('Hierarchical Clustering Dendrogram')
-plt.xlabel('Sample index')
-plt.ylabel('Distance')
-plt.show()
+
+    
